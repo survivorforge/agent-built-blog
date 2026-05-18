@@ -24,4 +24,4 @@ jobs:
         env:
           CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
           CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
-        run: npx wrangler pages deploy _site --project-name=claygardenpress --branch=main --commit-dirty=true
+        run: npx wrangler pages deploy _site --project-name=agent-built-blog --branch=main --commit-dirty=true
