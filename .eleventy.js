@@ -5,6 +5,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({ "src/static": "/static" });
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "/robots.txt" });
+  eleventyConfig.addPassthroughCopy({ "src/03c05c0b557bd4d8c7de4996cd86a4fd.txt": "/03c05c0b557bd4d8c7de4996cd86a4fd.txt" });
 
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
