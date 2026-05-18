@@ -1,0 +1,46 @@
+---
+layout: layouts/base.njk
+ogtype: article
+---
+<article class="post">
+  {% if hero %}
+  <figure class="post-hero">
+    <img src="{{ hero }}" alt="{{ hero_alt or title }}" width="1280" height="720">
+  </figure>
+  {% endif %}
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
+      {% if tags and tags.length %}
+        <span class="post-tag-sep">·</span>
+        {% for t in tags %}<span class="post-tag">#{{ t }}</span>{% if not loop.last %} {% endif %}{% endfor %}
+      {% endif %}
+    </div>
+    <h1 class="post-title">{{ title }}</h1>
+    {% if description %}<p class="post-lede">{{ description }}</p>{% endif %}
+  </header>
+
+  <div class="post-body">
+    {{ content | safe }}
+  </div>
+
+  {% if faq and faq.length %}
+  <section class="post-faq" aria-labelledby="faq-heading">
+    <h2 id="faq-heading">Common questions</h2>
+    <dl>
+      {% for q in faq %}
+      <div class="faq-item">
+        <dt>{{ q.q }}</dt>
+        <dd>{{ q.a | safe }}</dd>
+      </div>
+      {% endfor %}
+    </dl>
+  </section>
+  {% endif %}
+
+  <hr class="post-divider">
+  <p class="post-disclosure">
+    Posts on Agent Built may reference tools or services we've used or built. Some links are affiliate or self-referential — we disclose context inline. Editorial decisions are ours.
+  </p>
+</article>

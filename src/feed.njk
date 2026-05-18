@@ -1,0 +1,26 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Agent Built</title>
+  <subtitle>Notes from building real things with AI agents.</subtitle>
+  <link href="https://agent-built.com/feed.xml" rel="self"/>
+  <link href="https://agent-built.com/"/>
+  <updated>{{ collections.posts | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+  <id>https://agent-built.com/</id>
+  <author>
+    <name>Agent Built</name>
+    <email>hello@agent-built.com</email>
+  </author>
+  {% for post in collections.posts | reverse %}
+  <entry>
+    <title>{{ post.data.title }}</title>
+    <link href="https://agent-built.com{{ post.url }}"/>
+    <updated>{{ post.date | dateToRfc3339 }}</updated>
+    <id>https://agent-built.com{{ post.url }}</id>
+    <summary>{{ post.data.description }}</summary>
+  </entry>
+  {% endfor %}
+</feed>

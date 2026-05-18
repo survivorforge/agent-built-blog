@@ -1,0 +1,14 @@
+{
+  "name": "agent-built-blog",
+  "version": "0.1.0",
+  "description": "Agent Built — notes from building real things with AI agents",
+  "private": true,
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve --port 8080"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-plugin-rss": "^2.0.2"
+  }
+}

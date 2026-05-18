@@ -1,0 +1,36 @@
+---
+layout: layouts/base.njk
+title: Agent Built
+description: Notes from building real things with AI agents. Tools, integrations, and the workflows that actually ship.
+---
+<section class="hero">
+  <h1 class="hero-title">Building with AI agents.</h1>
+  <p class="hero-lede">Notes, comparisons, and the workflows that actually ship. From a working operator, not a thread guy.</p>
+</section>
+
+{% if collections.posts.length %}
+<section class="posts">
+  {% for post in collections.posts | reverse %}
+  <article class="post-card">
+    {% if post.data.hero %}
+    <a href="{{ post.url }}" class="post-card-image">
+      <img src="{{ post.data.hero }}" alt="{{ post.data.hero_alt or post.data.title }}" loading="lazy" width="800" height="450">
+    </a>
+    {% endif %}
+    <div class="post-card-body">
+      <div class="post-card-meta">
+        <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+        {% if post.data.tags and post.data.tags.length %}
+          <span class="sep">·</span>
+          {% for t in post.data.tags %}<span class="tag">#{{ t }}</span>{% if not loop.last %} {% endif %}{% endfor %}
+        {% endif %}
+      </div>
+      <h2 class="post-card-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+      {% if post.data.description %}<p class="post-card-desc">{{ post.data.description }}</p>{% endif %}
+    </div>
+  </article>
+  {% endfor %}
+</section>
+{% else %}
+<p class="empty-state">First post coming shortly.</p>
+{% endif %}

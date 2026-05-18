@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if title and title != "Agent Built" %}{{ title }} · Agent Built{% else %}Agent Built — Building with AI agents{% endif %}</title>
+<meta name="description" content="{{ description or 'Notes from building real things with AI agents. Tools, integrations, and the workflows that actually ship.' }}">
+<link rel="canonical" href="https://agent-built.com{{ page.url }}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="{{ ogtype or 'website' }}">
+<meta property="og:url" content="https://agent-built.com{{ page.url }}">
+<meta property="og:site_name" content="Agent Built">
+<meta property="og:title" content="{{ title or 'Agent Built' }}">
+<meta property="og:description" content="{{ description or 'Notes from building real things with AI agents.' }}">
+{% if hero %}<meta property="og:image" content="https://agent-built.com{{ hero }}">{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ title or 'Agent Built' }}">
+<meta name="twitter:description" content="{{ description or 'Notes from building real things with AI agents.' }}">
+{% if hero %}<meta name="twitter:image" content="https://agent-built.com{{ hero }}">{% endif %}
+<meta name="theme-color" content="#0b1220">
+<link rel="alternate" type="application/rss+xml" title="Agent Built" href="/feed.xml">
+<link rel="stylesheet" href="/static/style.css">
+{% if schema %}<script type="application/ld+json">{{ schema | safe }}</script>{% endif %}
+</head>
+<body>
+<header class="site-header">
+  <a href="/" class="brand">
+    <span class="brand-mark">⌬</span>
+    <span class="brand-name">Agent Built</span>
+  </a>
+  <nav class="site-nav">
+    <a href="/">Posts</a>
+    <a href="/about/">About</a>
+  </nav>
+</header>
+
+<main>
+  {{ content | safe }}
+</main>
+
+<footer class="site-footer">
+  <p>© {{ '' | year }} Agent Built · <a href="/privacy/">Privacy</a> · <a href="/feed.xml">RSS</a></p>
+</footer>
+</body>
+</html>

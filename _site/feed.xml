@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Agent Built</title>
+  <subtitle>Notes from building real things with AI agents.</subtitle>
+  <link href="https://agent-built.com/feed.xml" rel="self"/>
+  <link href="https://agent-built.com/"/>
+  <updated>2026-05-18T05:12:49Z</updated>
+  <id>https://agent-built.com/</id>
+  <author>
+    <name>Agent Built</name>
+    <email>hello@agent-built.com</email>
+  </author>
+  
+</feed>
