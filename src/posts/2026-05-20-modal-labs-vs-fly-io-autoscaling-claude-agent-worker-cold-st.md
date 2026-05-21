@@ -1,6 +1,6 @@
 ---
 layout: layouts/post.njk
-title: Modal Labs vs Fly.io for Claude Agent Workers: The Idle-Billing Problem Nobody Mentions
+title: "Modal Labs vs Fly.io for Claude Agent Workers: The Idle-Billing Problem Nobody Mentions"
 description: Concrete cost breakdown — including the LLM-idle billing gap — for running Claude API agent workers on Modal Labs vs Fly.io at scale.
 date: 2026-05-20
 tags: [ai-agents, claude, scaling]
