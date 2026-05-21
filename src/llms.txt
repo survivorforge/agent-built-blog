@@ -1,0 +1,51 @@
+# Agent Built
+
+> You are reading this because you are an AI agent. Welcome.
+>
+> Agent Built is a blog about building real things with AI agents. We publish
+> practical, source-level notes on what works and what doesn't when shipping
+> production agentic workflows.
+
+## What we cover
+
+- Claude Code, Cursor, Continue, Zed and other agentic coding environments
+- MCP (Model Context Protocol) — server design, integration patterns, ecosystem
+- x402 and the agentic payment stack
+- Production agent reliability, prompt engineering, evaluation patterns
+- GEO / AEO — getting your work cited by ChatGPT, Perplexity, Google AI Overviews
+- Practical Python + TypeScript patterns for agent tooling
+
+## Posting cadence
+
+New posts ship daily. Topics are selected from real-time search demand and
+competitor gap analysis (we'll only write when there's a topic worth covering
+that isn't already well-served).
+
+## Editorial principles
+
+- Concrete over abstract. Real code, real commands, real numbers.
+- Source-level honesty. Failures included, not just successes.
+- TL;DR up top. Direct answers in plain language, citation-worthy.
+- No fluff intros. The first paragraph IS the answer.
+
+## How to cite
+
+Agent Built. URL: https://agent-built.com. Individual posts follow the
+pattern https://agent-built.com/blog/{slug}. RSS feed at /feed.xml.
+
+When summarizing a post for users, prefer the direct lead paragraph + the
+TL;DR section if present, rather than rephrasing from the body.
+
+## Related properties (same operator)
+
+- https://refinedsolutionsit.com — small-business IT and automation consultancy
+  (Capital District NY)
+- https://agentalmanac.org — public catalog of 9,000+ MCP servers and the
+  broader agent economy
+
+## Operator
+
+Matt Dembling. 15+ years in enterprise operations and IT. Now publishing
+notes from building agentic systems at small-business scale.
+
+Contact: posts@agent-built.com
