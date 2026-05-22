@@ -1,7 +1,7 @@
 ---
 layout: layouts/post.njk
-title: Dify vs Flowise Self-Hosted: The Real Claude API Cost Per Workflow Run
-description: Infrastructure comparisons miss the point — the token overhead from agent mode vs. workflow mode dwarfs the platform cost difference at 10K runs/month.
+title: "Dify vs Flowise Self-Hosted: The Real Claude API Cost Per Workflow Run"
+description: "Infrastructure comparisons miss the point — the token overhead from agent mode vs. workflow mode dwarfs the platform cost difference at 10K runs/month."
 date: 2026-05-22
 tags: [ai-agents, claude, self-hosting]
 hero_prompt: minimalist editorial illustration, soft gradients, abstract technical diagram showing two diverging pipeline flows with cost meters and container blocks, no text, muted tones, suitable for blog hero, 16:9
