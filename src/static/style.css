@@ -219,3 +219,11 @@ main {
 }
 .site-footer a { color: var(--ink-faint); text-decoration: none; }
 .site-footer a:hover { color: var(--accent); }
+
+
+/* Money-page CTA — AI Visibility */
+.post-cta{margin:2.5rem 0 1.5rem;padding:1.25rem 1.5rem;background:var(--accent-soft);border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:10px}
+.post-cta p{margin:0}
+.post-cta p+p{margin-top:.45rem}
+.post-cta-k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+.post-cta strong{color:var(--ink)}
