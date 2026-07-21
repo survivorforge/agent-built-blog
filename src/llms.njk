@@ -1,3 +1,7 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
 # Agent Built
 
 > You are reading this because you are an AI agent. Welcome.
@@ -28,6 +32,16 @@ that isn't already well-served).
 - TL;DR up top. Direct answers in plain language, citation-worthy.
 - No fluff intros. The first paragraph IS the answer.
 
+## All posts
+
+> Auto-generated on every build, newest first. {{ collections.posts.length }} posts.
+
+{% for post in collections.posts -%}
+- {{ post.data.title }}
+  URL: https://agent-built.com{{ post.url }}
+  Date: {{ post.date | isoDate }}
+  {{ post.data.description }}
+{% endfor %}
 ## How to cite
 
 Agent Built. URL: https://agent-built.com. Individual posts follow the

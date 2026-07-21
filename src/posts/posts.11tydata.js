@@ -1,6 +1,10 @@
 // Auto-generates JSON-LD for every post (feeds base.njk's `{% if schema %}` block).
-// BlogPosting for all posts + FAQPage when the post has a `faq` list. DRY: no per-post edits.
+// One @graph per post: BlogPosting + FAQPage (when the post has a `faq` list).
+// author/publisher/isPartOf reference the sitewide Organization/WebSite entities
+// (@id #org / #site) emitted in base.njk. DRY: no per-post edits.
 const SITE = "https://agent-built.com";
+const ORG = SITE + "/#org";
+const WEBSITE = SITE + "/#site";
 
 module.exports = {
   eleventyComputed: {
@@ -9,32 +13,35 @@ module.exports = {
       const url = SITE + (data.page && data.page.url ? data.page.url : "/");
       const iso = data.date ? new Date(data.date).toISOString() : undefined;
       const post = {
-        "@context": "https://schema.org",
         "@type": "BlogPosting",
+        "@id": url + "#article",
         "headline": data.title,
         "description": data.description,
         "datePublished": iso,
         "dateModified": iso,
         "url": url,
         "mainEntityOfPage": { "@type": "WebPage", "@id": url },
-        "author": { "@type": "Organization", "name": "Agent Built", "url": SITE + "/" },
-        "publisher": { "@type": "Organization", "name": "Agent Built", "url": SITE + "/" }
+        "author": { "@id": ORG },
+        "publisher": { "@id": ORG },
+        "isPartOf": { "@id": WEBSITE }
       };
       if (data.hero) post.image = SITE + data.hero;
       if (Array.isArray(data.tags)) {
         const kw = data.tags.filter((t) => t && t !== "posts").join(", ");
         if (kw) post.keywords = kw;
       }
-      const out = [post];
+      const graph = [post];
       if (Array.isArray(data.faq) && data.faq.length) {
         const qs = data.faq.filter((f) => f && f.q && f.a).map((f) => ({
           "@type": "Question",
           "name": f.q,
           "acceptedAnswer": { "@type": "Answer", "text": f.a }
         }));
-        if (qs.length) out.push({ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": qs });
+        if (qs.length) {
+          graph.push({ "@type": "FAQPage", "@id": url + "#faq", "mainEntity": qs });
+        }
       }
-      return JSON.stringify(out.length === 1 ? out[0] : out);
+      return JSON.stringify({ "@context": "https://schema.org", "@graph": graph });
     }
   }
 };
