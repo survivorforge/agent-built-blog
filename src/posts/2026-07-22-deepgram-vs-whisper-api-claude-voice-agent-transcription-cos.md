@@ -13,7 +13,7 @@ faq:
   - q: Can I use the OpenAI Whisper API for a real-time Claude voice agent?
     a: Not directly. The Whisper API (whisper-1) is batch-only — it transcribes complete audio files, not a live stream. To use it in a conversational loop you'd build a chunking pipeline that adds one to three seconds of latency, which breaks the turn-taking feel before Claude even starts responding.
   - q: What does a full Claude voice agent cost per minute?
-    a: Roughly $0.05–$0.18 per minute all-in: telephony ($0.01–0.03), STT ($0.006–0.008), the Claude LLM layer ($0.005–0.04 depending on model and context), and TTS ($0.03–0.10). STT is the smallest line item; TTS and telephony dominate.
+    a: "Roughly $0.05–$0.18 per minute all-in: telephony ($0.01–0.03), STT ($0.006–0.008), the Claude LLM layer ($0.005–0.04 depending on model and context), and TTS ($0.03–0.10). STT is the smallest line item; TTS and telephony dominate."
   - q: Does the Deepgram vs Whisper price difference actually matter?
     a: Almost never. STT is 4–8% of a full voice-agent minute. Pick Deepgram for its sub-300ms streaming and built-in turn detection, not because it saves or costs you a fraction of a cent per minute.
 schema_type: Article
