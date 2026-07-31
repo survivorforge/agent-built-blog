@@ -104,3 +104,9 @@ The table above shows a 50,000-short-document-per-month pipeline hitting $990/mo
 Make.com's value is real and it compounds: native integrations with dozens of services, visual debugging that non-engineers can follow, and rapid iteration without deployment cycles. If your document pipeline routes results into Google Workspace, Salesforce, Airtable, or Slack natively through Make.com connectors, those integrations represent genuine saved engineering time. If the pipeline is fundamentally fetch → call Claude → store result, with no meaningful orchestration complexity, the operations overhead becomes progressively harder to justify as volume grows.
 
 The question worth asking isn't "what does Make.com cost" or "what do tokens cost" in isolation. It's what the combined number looks like at the volume you expect six months out — and whether the orchestration value, honestly assessed, justifies that line item versus a more direct integration path. That calculation comes out differently for every pipeline, but you can't run it unless you model both sides together.
+
+<!-- consult-cta -->
+<aside class="post-cta">
+  <p class="post-cta-k">Cost this on your own stack</p>
+  <p>Modelling both sides together against your actual volumes is the job we do for a fixed fee: <a href="/consult/">AI pipeline cost assessment, $1,500, written report in a week</a>.</p>
+</aside>

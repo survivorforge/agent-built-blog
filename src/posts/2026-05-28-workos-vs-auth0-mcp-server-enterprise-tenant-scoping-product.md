@@ -123,3 +123,9 @@ If your product is B2B SaaS, Organizations is your primary data model, and you a
 If you are already running Auth0 with existing enterprise customers, existing SSO connections, and existing custom Actions that define your permission model: stay on Auth0 and add Organizations. Migrating customers to a new auth provider to gain cleaner MCP tenant scoping is not worth the disruption unless you have a compelling reason beyond MCP alone.
 
 The unresolved tension neither vendor solves: at scale (100+ enterprise tenants with strict data residency or physical isolation requirements), you will eventually need infrastructure-level separation that logical Organizations cannot provide. Both WorkOS and Auth0 will tell you they handle enterprise. What they mean is they handle the auth layer. The physical tenancy problem — separate databases, separate encryption key hierarchies, data residency in specific regions per customer — is yours to solve. MCP token scoping is a prerequisite for getting there, not a substitute for it.
+
+<!-- consult-cta -->
+<aside class="post-cta">
+  <p class="post-cta-k">Cost this on your own stack</p>
+  <p>If auth is one line in an agent budget nobody has costed yet, we price the whole pipeline as a fixed engagement: <a href="/consult/">AI pipeline cost assessment, $1,500, written report in a week</a>.</p>
+</aside>

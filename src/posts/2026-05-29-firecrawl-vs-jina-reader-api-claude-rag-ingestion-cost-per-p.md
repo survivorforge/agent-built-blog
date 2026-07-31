@@ -91,3 +91,9 @@ Jina will cut your ingestion API cost by 80–90% versus Firecrawl Standard for 
 Firecrawl earns its premium on JavaScript rendering, anti-bot resistance, crawl automation, and extraction quality — not price. If your corpus is text-heavy static pages you already have URLs for, Jina is the rational default and the total-cost math including downstream Claude processing usually confirms it.
 
 Where we don't have good data: sustained behavior for either tool above 500k pages per month. At that volume, self-hosting Firecrawl's AGPL codebase becomes worth pricing seriously — but running a browser fleet at scale has real infrastructure overhead that doesn't show up until you're running it. That is a tradeoff we have not tested ourselves.
+
+<!-- consult-cta -->
+<aside class="post-cta">
+  <p class="post-cta-k">Cost this on your own stack</p>
+  <p>If you want your own corpus counted rather than a typical one, we price ingestion and the downstream model calls together as one fixed engagement: <a href="/consult/">AI pipeline cost assessment, $1,500</a>.</p>
+</aside>

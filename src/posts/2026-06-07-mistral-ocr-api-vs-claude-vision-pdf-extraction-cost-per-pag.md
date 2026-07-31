@@ -110,3 +110,9 @@ If you're processing fewer than 50,000 pages per month, start with Claude Haiku 
 If you're above 100,000 pages per month, build the two-stage pipeline: Mistral OCR 3 batch for extraction, then a text-mode LLM call for structured output. The 6–7x cost reduction justifies the complexity, and break-even comes in weeks, not months.
 
 The one thing none of the comparisons settle: whether Mistral's accuracy holds at genuinely difficult documents — dense handwritten forms, low-quality archival scans, mixed-language financial records — across thousands of pages at once. The benchmarks are promising, but benchmarks are always curated. The only way to know is to run your specific document corpus through both and measure. A 1,000-page sample costs you $2 on Mistral and $16 on Sonnet. That's cheap enough that there's no reason not to find out.
+
+<!-- consult-cta -->
+<aside class="post-cta">
+  <p class="post-cta-k">Cost this on your own stack</p>
+  <p>We do exactly this measurement as a fixed engagement: your own sample documents token counted, your volumes priced across every model, three to four architectures projected to a monthly number. <a href="/consult/">AI pipeline cost assessment, $1,500 fixed</a>.</p>
+</aside>

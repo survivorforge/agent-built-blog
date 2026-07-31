@@ -116,3 +116,9 @@ So the real decision rule, from having shipped both:
 The token math is settled and it's cheap: a Claude contract review costs pennies, and good engineering keeps it there. Docusign's per-document AI cost is genuinely uncomputable from the outside, which is itself the finding — bundled allowances and custom quotes mean you're buying a perimeter, not a per-unit rate.
 
 The unresolved tension is the write path. Right now the honest architecture is a hybrid: Claude does the reasoning where it's cheap and flexible, Docusign does the signing and the compliant record where it's authoritative, and the MCP connector — still beta, still read-only on the parts that matter — is the seam between them. When those write operations leave beta and the perimeter question gets a cleaner answer than "run a compliance review," the calculus shifts toward the custom agent for a lot more teams. Until then, the cheapest review isn't the one with the lowest token cost. It's the one you didn't have to build a compliance case and an audit trail to ship.
+
+<!-- consult-cta -->
+<aside class="post-cta">
+  <p class="post-cta-k">Cost this on your own stack</p>
+  <p>If you want this token level accounting run against your own contract flow instead of ours, that is a fixed engagement: <a href="/consult/">AI pipeline cost assessment, $1,500, written report in a week</a>.</p>
+</aside>
