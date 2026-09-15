@@ -27,7 +27,7 @@ We've been running Claude-backed voice agents through Twilio for inbound support
 
 Start here because it reframes everything downstream: Twilio and Claude are not competitors. Twilio is the carrier — it terminates the PSTN call, handles SIP, streams the audio. Claude is the language model that reads a transcript and decides what to say. You don't pick one. You compose both, plus two more layers most comparisons wave at.
 
-The layer people forget: **Claude has no native realtime voice API.** As of mid-2026, there's no Anthropic equivalent of a speech-to-speech model that takes audio in and emits audio out. Claude reasons over text. That means a Claude voice pipeline *always* bolts on a separate speech-to-text engine in front and a separate text-to-speech engine behind. So the real stack is four billed layers:
+The layer people forget: **Claude has no native realtime voice API.** As of mid-2026, there's no Anthropic equivalent of a speech-to-speech model that takes audio in and emits audio out. Claude reasons over text. That means a [Claude voice](/posts/2026-07-22-deepgram-vs-whisper-api-claude-voice-agent-transcription-cos/) pipeline *always* bolts on a separate speech-to-text engine in front and a separate text-to-speech engine behind. So the real stack is four billed layers:
 
 1. **Telephony** — Twilio (or an alternative) carries the call.
 2. **STT** — Deepgram, or Twilio's managed pipeline, transcribes the caller.

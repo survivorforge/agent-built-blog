@@ -58,7 +58,7 @@ Here's the operator insight none of the ranking pages state plainly. **An agent 
 
 Against Stripe's 100-requests-per-second ceiling, 60 calls is nothing. Against QuickBooks' 500-per-minute-per-company limit with a ~10-concurrent cap, a slightly over-eager agent — or two agents sharing one company file — starts collecting HTTP 429 throttle responses. And a 429 is worse than slow: a naive agent treats the error as a reason to retry, which spends *more* of your rate budget and more tokens re-reasoning about the failure. We've watched an agent turn a single throttle into a five-minute retry spiral that cost more in Claude tokens than the whole task should have.
 
-So the "cost" of the QuickBooks API isn't a dollar figure on an invoice. It's the engineering you have to do — request batching, backoff, caching a local copy of slow-changing data like the customer list — to keep a chatty agent under 500/min. Stripe hands you that headroom for free. If your agent's job is high-frequency (monitoring, reconciliation, anything that runs every few minutes), that difference is the real cost delta between the two.
+So the "cost" of the [QuickBooks API](/posts/2026-08-01-netsuite-api-vs-quickbooks-api-claude-agent-finance-automati/) isn't a dollar figure on an invoice. It's the engineering you have to do — request batching, backoff, caching a local copy of slow-changing data like the customer list — to keep a chatty agent under 500/min. Stripe hands you that headroom for free. If your agent's job is high-frequency (monitoring, reconciliation, anything that runs every few minutes), that difference is the real cost delta between the two.
 
 ## The real bill: API + tokens + middleware
 
