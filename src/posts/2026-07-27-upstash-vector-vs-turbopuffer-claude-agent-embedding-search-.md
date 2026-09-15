@@ -19,7 +19,7 @@ faq:
 schema_type: Article
 ---
 
-Search the query in the title and you get two piles of results that never talk to each other. One pile — the Medium essays, the Tigerdata post — tells you AI agents don't need vector search anymore, that Anthropic ripped it out of Claude Code and replaced it with grep. The other pile — Firecrawl, Liveblocks, developersdigest — compares nineteen vector databases on recall and hosting model. Neither pile answers the question you actually have: your Claude agent *does* need embedding search for something, you've narrowed it to Upstash Vector or Turbopuffer, and you want to know what the bill looks like when you're not running a demo anymore.
+Search the query in the title and you get two piles of results that never talk to each other. One pile — the Medium essays, the Tigerdata post — tells you AI agents don't need vector search anymore, that Anthropic ripped it out of [Claude Code](/posts/2026-05-18-claude-code-vs-cursor-for-production-agent-workflows-in-2026/) and replaced it with grep. The other pile — Firecrawl, Liveblocks, developersdigest — compares nineteen vector databases on recall and hosting model. Neither pile answers the question you actually have: your Claude agent *does* need embedding search for something, you've narrowed it to Upstash Vector or Turbopuffer, and you want to know what the bill looks like when you're not running a demo anymore.
 
 Nobody compares those two head to head. They both show up as one row each in the big roundups — "lowest cost per query," "serverless, DiskANN" — and then the article moves on. So here's the direct comparison, with the pricing math worked out at three scale points and, more importantly, the one variable that actually decides it: how your tenants are shaped.
 
@@ -33,7 +33,7 @@ The place that argument quietly stops applying is everything that isn't a filesy
 
 - The corpus is **prose that matches by meaning, not tokens** — support tickets, past conversations, a research library where "wide feet" needs to find "broad fit."
 - The corpus is **too large or too remote to walk** — 50 million documents in object storage, where "just read the relevant ones" begs the question of which ones.
-- You need **agent memory** — the running semantic recall of what happened across sessions, which is a retrieval problem with no filesystem underneath it.
+- You need **[agent memory](/posts/2026-05-18-agent-memory-pgvector-vs-pinecone-retrieval-latency-claude-p/)** — the running semantic recall of what happened across sessions, which is a retrieval problem with no filesystem underneath it.
 
 That's the honest boundary. If your agent falls on the grep side, close this tab. If it falls on the embedding side — and a lot of production agents have exactly one component that does — then the question of *which* store, and what it costs, is live. Both Upstash and Turbopuffer are aimed squarely at that component.
 

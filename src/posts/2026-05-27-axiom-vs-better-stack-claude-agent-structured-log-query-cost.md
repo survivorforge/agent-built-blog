@@ -59,7 +59,7 @@ One cost that neither platform's pricing page makes obvious: query compute. Axio
 
 ## The Query Interface Gap
 
-This is the part the other comparisons miss entirely, and it's the most consequential difference for AI agent workflows.
+This is the part the other comparisons miss entirely, and it's the most consequential difference for AI [agent workflows](/posts/2026-05-18-claude-code-vs-cursor-for-production-agent-workflows-in-2026/).
 
 Axiom ships a native MCP server. As of the March 2026 MetricsDB GA release, that MCP server exposes both APL (for logs, traces, events) and MPL (for metrics) as queryable tools. A Claude agent running inside an orchestration loop can include Axiom as an MCP connection and call queries directly in a tool turn — no REST wrapper, no custom tool definition, no middleware. The agent receives structured results it can reason over.
 
@@ -85,7 +85,7 @@ If your agent's log schema is stable and you're not iterating heavily on prompt 
 
 **Axiom:** APL queries against deeply nested JSON are fast but require knowing your data shape. If you're querying raw Claude API responses without normalizing them on ingest, you'll write a lot of `| extend tool_name = tostring(parse_json(content)[0].name)` style expressions. The agent-generated APL tends to be more correct for flat or lightly nested data. For multi-level nesting — content blocks containing tool_use blocks containing nested input objects — even well-prompted Claude struggles to generate valid APL without examples in context. Invest in a small library of query templates your agent can reference.
 
-**Better Stack:** The free tier's 3-day retention is a trap if you're debugging an issue that surfaced slowly. Agent memory bugs, prompt degradation across conversation turns, tool failure patterns — these often take weeks to accumulate enough signal to be visible. By the time you notice the problem, you're querying logs that no longer exist. The Starter tier's 30-day retention at $29/month is the minimum viable setup for serious agent debugging.
+**Better Stack:** The free tier's 3-day retention is a trap if you're debugging an issue that surfaced slowly. [Agent memory](/posts/2026-05-18-agent-memory-pgvector-vs-pinecone-retrieval-latency-claude-p/) bugs, prompt degradation across conversation turns, tool failure patterns — these often take weeks to accumulate enough signal to be visible. By the time you notice the problem, you're querying logs that no longer exist. The Starter tier's 30-day retention at $29/month is the minimum viable setup for serious agent debugging.
 
 **Both:** Neither platform has first-party tooling for correlating Claude API costs (from Anthropic's usage API) with log events. You can join on request_id if you log it, but building a view that shows "this agent run cost $0.43 in API tokens and failed at tool call #4" requires custom work on both platforms. We built this with Axiom because APL's join syntax was easier to reason about, but it's not a native feature anywhere.
 

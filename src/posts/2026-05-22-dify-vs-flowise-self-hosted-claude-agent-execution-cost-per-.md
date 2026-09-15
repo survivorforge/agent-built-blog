@@ -19,7 +19,7 @@ faq:
 schema_type: Article
 ---
 
-Every comparison we found when researching this decision covered the same ground: visual builders, RAG pipelines, GitHub stars, LangChain underpinnings, and a note that self-hosting is "free." None of them touched what actually determines your monthly bill when you're running Claude at volume. So here is what we found when we ran the numbers ourselves.
+Every comparison we found when researching this decision covered the same ground: visual builders, [RAG pipelines](/posts/2026-05-29-firecrawl-vs-jina-reader-api-claude-rag-ingestion-cost-per-p/), GitHub stars, LangChain underpinnings, and a note that self-hosting is "free." None of them touched what actually determines your monthly bill when you're running Claude at volume. So here is what we found when we ran the numbers ourselves.
 
 The short version: infrastructure cost is a rounding error. Token overhead is not. And the overhead gap between agent mode and workflow mode — within either platform — is larger than any gap between the platforms themselves. If you are switching from Flowise to Dify specifically to save money on Claude API costs, you will be disappointed unless you also change how your workflows are structured.
 

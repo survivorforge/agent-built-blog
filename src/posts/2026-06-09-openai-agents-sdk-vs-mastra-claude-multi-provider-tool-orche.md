@@ -21,7 +21,7 @@ schema_type: Article
 
 Every comparison article shows you how to register a tool. None of them tell you what happens eighteen months into production when Anthropic ships a silent change to how parallel tool call results are formatted, or when OpenAI updates `tool_choice: "required"` semantics in a minor SDK version. That's the actual comparison that matters if you're building something you'll have to maintain.
 
-The setup-time comparison between OpenAI Agents SDK and Mastra is honest: both work, both can route to Claude, both support multi-agent workflows. The divergence shows up in the maintenance surface — specifically in what layer absorbs provider API changes, what Claude features get silently dropped through the abstraction, and what you're actually signing up for when you call a system "provider-agnostic."
+The setup-time comparison between OpenAI Agents SDK and Mastra is honest: both work, both can route to Claude, both support multi-[agent workflows](/posts/2026-05-18-claude-code-vs-cursor-for-production-agent-workflows-in-2026/). The divergence shows up in the maintenance surface — specifically in what layer absorbs provider API changes, what Claude features get silently dropped through the abstraction, and what you're actually signing up for when you call a system "provider-agnostic."
 
 We've run both in production environments with 15–30 registered tools across Claude and GPT-4o. Here's what we found.
 

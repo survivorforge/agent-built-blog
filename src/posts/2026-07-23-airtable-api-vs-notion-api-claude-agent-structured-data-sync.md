@@ -21,7 +21,7 @@ schema_type: Article
 
 Every "Airtable vs Notion" page on the first page of Google ranks these two on seat price. Twenty dollars versus ten. Forty-five versus eighteen. A "2.5x cost gap." All true, all beside the point if you're building a Claude agent that reads and writes structured data. When an agent is the consumer, the seat price is a rounding error and the API response shape is the whole bill.
 
-We've been running both syncs in production — an Airtable base feeding a lead-enrichment agent and a Notion workspace backing a content-ops agent — and the cost line that actually moves is Claude API tokens, not subscriptions. Nobody in the top results measures that. The one post that gets close (shareuhack's Notion-MCP breakdown) nails the "build your own agent instead of paying for Notion's" argument but only looks at Notion, and only at a single-run estimate. It never asks the question that decides your monthly bill: **how many tokens does one row of your data cost when Claude has to read it?**
+We've been running both syncs in production — an Airtable base feeding a lead-enrichment agent and a Notion workspace backing a content-ops agent — and the cost line that actually moves is [Claude API tokens](/posts/2026-05-21-make-com-operations-cost-vs-claude-api-tokens-document-proce/), not subscriptions. Nobody in the top results measures that. The one post that gets close (shareuhack's Notion-MCP breakdown) nails the "build your own agent instead of paying for Notion's" argument but only looks at Notion, and only at a single-run estimate. It never asks the question that decides your monthly bill: **how many tokens does one row of your data cost when Claude has to read it?**
 
 That number is where Airtable and Notion diverge hard, and it's the opposite of what the seat-price comparisons imply. Notion is cheaper to sit in. Airtable is dramatically cheaper to feed to a model. Here's the actual accounting.
 
@@ -66,7 +66,7 @@ So Notion costs you twice: more tokens per record *and* more round-trips to asse
 
 ## MCP or raw API? Depends on whether it runs unattended
 
-Both platforms now have a Model Context Protocol path, and MCP is the right tool for *interactive* agent work — you're in Claude Desktop or Claude Code, you want to ask questions and make edits without writing integration code. The official Notion MCP server exposes around 22 operations (search, read/create/update pages, query/create/update database items, comments, user info). Airtable has MCP options too, both official and community.
+Both platforms now have a Model Context Protocol path, and MCP is the right tool for *interactive* agent work — you're in Claude Desktop or [Claude Code](/posts/2026-05-18-claude-code-vs-cursor-for-production-agent-workflows-in-2026/), you want to ask questions and make edits without writing integration code. The official [Notion MCP](/posts/2026-05-26-notion-mcp-vs-confluence-mcp-claude-agent-knowledge-retrieva/) server exposes around 22 operations (search, read/create/update pages, query/create/update database items, comments, user info). Airtable has MCP options too, both official and community.
 
 Two things the MCP-evangelist posts underplay:
 

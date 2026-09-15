@@ -44,7 +44,7 @@ Here is what the numbers look like across representative page types. Token estim
 | Dense technical doc | 20,000 | $0.000400 | $0.000830 | 2× |
 | Very large page | ~41,500 | $0.000830 | $0.000830 | break-even |
 
-The crossover happens at roughly **41,500 output tokens per page** — approximately 55,000 words of clean content. That is a book chapter compressed into a single URL, not a realistic web page. For any documentation site, blog archive, or product catalog ingestion, Jina is cheaper on raw API cost alone. Usually dramatically so.
+The crossover happens at roughly **41,500 output tokens per page** — approximately 55,000 words of clean content. That is a book chapter compressed into a single URL, not a realistic web page. For any documentation site, blog archive, or product catalog ingestion, Jina is cheaper on raw [API cost](/posts/2026-05-22-dify-vs-flowise-self-hosted-claude-agent-execution-cost-per-/) alone. Usually dramatically so.
 
 This directly contradicts a widely-cited claim from at least one comparison that "at 100k pages/month, Firecrawl is 4–5× cheaper." Run the math: at a typical 4,000-token average, 100k pages through Jina costs roughly **$8** in tokens versus Firecrawl Standard's **$83** flat fee. Jina is 10× cheaper at that workload, not 5× more expensive. The only scenario where Firecrawl wins on raw API price is scraping consistently long pages — dense whitepapers, full transcript archives — or if Jina's pricing has moved significantly since community reports were logged.
 

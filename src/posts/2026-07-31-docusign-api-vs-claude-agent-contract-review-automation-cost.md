@@ -21,7 +21,7 @@ schema_type: Article
 
 Every page ranking for this query tells you one of two things. Docusign's own posts tell you Iris will "accelerate agreement review." The Claude-legal guides tell you it "saves 15–30 minutes per document." One pricing page lists Docusign's plan tiers. Not one of them answers the question people are actually typing: what does reviewing *one contract* cost?
 
-We've built both — a custom Claude agent wired into a Docusign tenant through the MCP connector, and workflows that lean on Iris inside IAM. So here's the number nobody publishes, worked out at the token level, plus the more useful thing: *why* the two costs can't be compared with a single division, and where the crossover actually sits.
+We've built both — a [custom Claude agent](/posts/2026-07-25-zendesk-ai-vs-custom-claude-agent-ticket-triage-cost-per-res/) wired into a Docusign tenant through the MCP connector, and workflows that lean on Iris inside IAM. So here's the number nobody publishes, worked out at the token level, plus the more useful thing: *why* the two costs can't be compared with a single division, and where the crossover actually sits.
 
 ## What one Claude contract review actually costs
 

@@ -80,7 +80,7 @@ Every comparison piece tests OAuth flows in a staging environment with fresh cre
 
 **The normalization edge.** Composio normalizes responses across integrations, which is genuinely useful until it isn't. HubSpot's contact object has 200+ custom properties. Composio's toolkit doesn't surface them. If your agent needs those fields, you're adding custom logic on top of a managed integration — harder to debug than either pure approach, and a sign you picked the wrong tier for that integration.
 
-**Rate limit opacity.** Composio abstracts rate limits, which means your agent can't observe how close to quota it is. For agent workflows that make timing decisions based on remaining API quota, this is a real architectural constraint, not a minor annoyance.
+**Rate limit opacity.** Composio abstracts rate limits, which means your agent can't observe how close to quota it is. For [agent workflows](/posts/2026-05-18-claude-code-vs-cursor-for-production-agent-workflows-in-2026/) that make timing decisions based on remaining API quota, this is a real architectural constraint, not a minor annoyance.
 
 ## The Hybrid Architecture That Actually Works
 

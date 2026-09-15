@@ -71,7 +71,7 @@ The batch API row uses Anthropic's Message Batches API, which runs at a flat 50%
 
 This is the finding most teams miss. The instinct is to optimize around document count — "how many are we processing?" — but document length is the higher-leverage variable at every scale above a few hundred documents per month.
 
-At 5,000 documents per month, Make.com's bill is $32 whether you're processing short or long documents. The Claude API cost is $68 for short documents and $225 for long. Every dollar of that $157 difference is token spend driven entirely by length. For contracts, financial filings, research reports, or anything where the source document is dense, the Make.com operations line becomes a rounding error relative to the Claude bill.
+At 5,000 documents per month, Make.com's bill is $32 whether you're processing short or long documents. The [Claude API cost](/posts/2026-05-22-dify-vs-flowise-self-hosted-claude-agent-execution-cost-per-/) is $68 for short documents and $225 for long. Every dollar of that $157 difference is token spend driven entirely by length. For contracts, financial filings, research reports, or anything where the source document is dense, the Make.com operations line becomes a rounding error relative to the Claude bill.
 
 At 50,000 long documents per month without optimization, Claude API tokens are 7× Make.com's operations cost. Every cost-reduction conversation at that scale should start with the API, not the orchestration layer.
 
