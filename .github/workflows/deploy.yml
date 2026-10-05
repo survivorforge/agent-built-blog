@@ -24,4 +24,7 @@ jobs:
         env:
           CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
           CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
+          # Pinned 2026-10-05: the global key now sees a 2nd account ("Codex Playground", created
+          # 2026-10-02), so wrangler refuses to guess in CI. The Pages project lives here.
+          CLOUDFLARE_ACCOUNT_ID: 91cfa44b36d249ff13b19c0a305b09db
         run: npx wrangler pages deploy _site --project-name=agent-built-blog --branch=main --commit-dirty=true
