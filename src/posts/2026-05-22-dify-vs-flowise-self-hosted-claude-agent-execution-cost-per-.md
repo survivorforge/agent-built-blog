@@ -11,7 +11,7 @@ faq:
   - q: Is Dify cheaper to self-host than Flowise?
     a: For infrastructure alone, Dify costs more — roughly $24–48/month vs. $6–12/month for Flowise on comparable hardware. But infrastructure is rarely the biggest line item. Token overhead from agent mode vs. workflow mode typically dominates your total bill at any meaningful volume.
   - q: How much does LangChain's tool schema injection actually add to my Claude API costs in Flowise?
-    a: In our testing, a Flowise agentflow with three tools adds roughly 2,000–4,000 extra input tokens per LLM step because LangChain injects each tool's full JSON schema into every completion call. At three steps per run and 10,000 runs/month with Claude Sonnet 4.6, that overhead alone adds around $400/month compared to a simple chatflow.
+    a: A Flowise agentflow is built on LangChain, which sends each tool's full JSON schema with every completion call, so tool definitions add input tokens on every step. The cost table below models that overhead at 10,000 runs/month; count your own schemas' tokens to get your real figure.
   - q: Does switching from Flowise to Dify reduce my Claude API bill?
     a: Only if you also switch from agent mode to structured workflow nodes. A Dify agent and a Flowise agentflow have similar token overhead — both land in the 3–5× range. The platform matters less than the execution mode.
   - q: Do both Flowise and Dify support Claude prompt caching?
@@ -46,7 +46,7 @@ Here are our rough estimates from testing, hedged appropriately because real num
 | Flowise chatflow (simple RAG) | ~1.2–1.5× | Minimal LangChain scaffolding |
 | Flowise agentflow (3+ tools) | ~3–5× | Full JSON schema injected per tool per step |
 
-The Flowise agentflow number deserves explanation. LangChain — which Flowise agentflows are built on — injects each tool's complete JSON schema into every completion call. With three tools, you are looking at roughly 2,000–4,000 extra input tokens per LLM step. Across a three-step agent run, that is 6,000–12,000 tokens of overhead that has nothing to do with your actual task. This is not a Flowise bug; it is how LangChain's tool-calling abstraction works. It is also largely invisible unless you add external logging.
+The Flowise agentflow number deserves explanation. LangChain — which Flowise agentflows are built on — injects each tool's complete JSON schema into every completion call. With three tools, that can mean a few thousand extra input tokens per LLM step, depending on how large the schemas are, and a three-step run pays it three times. None of it has anything to do with your actual task. This is not a Flowise bug; it is how LangChain's tool-calling abstraction works. It is also largely invisible unless you add external logging.
 
 ## The Actual Monthly Numbers
 
@@ -61,7 +61,7 @@ Using Claude Sonnet 4.6 at $3/MTok input and $15/MTok output, with a base worklo
 
 These are estimates. Treat them as order-of-magnitude comparisons, not invoices. Your prompt sizes, tool counts, and retry rates will shift the API figures. But the pattern holds: the two structured/workflow modes cluster together around $134–142/month. The two agent modes cluster together around $474–552/month. The platform choice moves you $8 in either direction within each cluster. The mode choice moves you $330–410 between clusters.
 
-We have not tested these configurations above roughly 15,000 runs/month, so we cannot speak to whether the ratios hold at 100K volume or whether different bottlenecks emerge.
+These figures are modeled from the assumptions above, not measured. Whether the ratios hold at 100K runs/month, or different bottlenecks emerge, is worth testing on your own workload.
 
 ## Token Visibility: An Underrated Operational Difference
 

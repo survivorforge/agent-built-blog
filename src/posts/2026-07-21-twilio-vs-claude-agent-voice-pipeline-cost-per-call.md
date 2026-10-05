@@ -85,7 +85,7 @@ Reread the table with the model priced correctly and the picture inverts from wh
 
 That has a consequence the per-minute pages never draw: **latency is a cost multiplier, not just a UX problem.** Telephony and STT bill for every second the call is open. A pipeline that adds 500ms of round-trip lag doesn't just feel robotic — it stretches the call. Across thousands of calls, a slower pipeline quietly buys you more Twilio and Deepgram minutes. This is the hidden tax in a managed pipeline like ConversationRelay running near 1000ms versus a tuned custom stack under 500ms: you may pay the premium *and* pay for the extra duration it causes.
 
-TTS is the other lever, and it's the one to pull first. It's usually the single largest AI line item, it scales with how much your agent *talks*, and premium voices cost 3–4× budget ones. Two cheap wins we took: tighten the prompt so the agent is terse (fewer generated characters), and drop to a cheaper voice for internal or low-stakes flows. Cutting agent verbosity 30% cut our TTS bill almost proportionally — a bigger dollar swing than any model change we tried.
+TTS is the other lever, and it's the one to pull first. It's usually the single largest AI line item, it scales with how much your agent *talks*, and premium voices cost 3–4× budget ones. Two cheap wins: tighten the prompt so the agent is terse (fewer generated characters), and drop to a cheaper voice for internal or low-stakes flows. Because TTS is billed on how much the agent speaks, cutting verbosity cuts that line roughly in proportion, which can be a bigger dollar swing than a model change.
 
 ## Common pitfalls
 

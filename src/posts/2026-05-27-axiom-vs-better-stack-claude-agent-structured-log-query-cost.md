@@ -55,7 +55,7 @@ Better Stack's Logs product tiers by daily ingest volume and retention. The Star
 
 At small-to-mid scale, Better Stack's flat-rate tiers are often cheaper because you're not paying per GB — you're buying headroom. At growth scale, Axiom's per-GB model compresses better if your ingest is spiky rather than steady. The crossover varies by workload; the math above assumes consistent daily volume.
 
-One cost that neither platform's pricing page makes obvious: query compute. Axiom charges nothing extra for APL queries regardless of how many your agent runs. Better Stack's SQL queries are also included in the plan. But if your agent is hitting the logs API 500 times per day to check for recent failures, you need to confirm you're not hitting undocumented rate limits at each tier — we ran into a soft limit on Better Stack's Starter tier at roughly 1,000 API queries/day before the response times degraded, though this wasn't a hard error.
+One cost that neither platform's pricing page makes obvious: query compute. Axiom charges nothing extra for APL queries regardless of how many your agent runs. Better Stack's SQL queries are also included in the plan. But if your agent is hitting the logs API 500 times per day to check for recent failures, you need to confirm you're not hitting undocumented rate limits at each tier — check each tier's documented API limits before you build a polling loop on them.
 
 ## The Query Interface Gap
 
@@ -87,7 +87,7 @@ If your agent's log schema is stable and you're not iterating heavily on prompt 
 
 **Better Stack:** The free tier's 3-day retention is a trap if you're debugging an issue that surfaced slowly. [Agent memory](/posts/2026-05-18-agent-memory-pgvector-vs-pinecone-retrieval-latency-claude-p/) bugs, prompt degradation across conversation turns, tool failure patterns — these often take weeks to accumulate enough signal to be visible. By the time you notice the problem, you're querying logs that no longer exist. The Starter tier's 30-day retention at $29/month is the minimum viable setup for serious agent debugging.
 
-**Both:** Neither platform has first-party tooling for correlating Claude API costs (from Anthropic's usage API) with log events. You can join on request_id if you log it, but building a view that shows "this agent run cost $0.43 in API tokens and failed at tool call #4" requires custom work on both platforms. We built this with Axiom because APL's join syntax was easier to reason about, but it's not a native feature anywhere.
+**Both:** Neither platform has first-party tooling for correlating Claude API costs (from Anthropic's usage API) with log events. You can join on request_id if you log it, but building a view that shows "this agent run cost $0.43 in API tokens and failed at tool call #4" requires custom work on both platforms. Axiom's APL `join` is one way to build it, but it's not a native feature anywhere.
 
 ## Picking a Side
 

@@ -21,7 +21,7 @@ schema_type: Article
 
 Every comparison you've read says both tools do cost attribution. They're right. What they don't say is that cost attribution works fine for two or three workspaces and starts failing in specific, predictable ways after that — ways that are distinct between Portkey and Helicone, and ways that get worse if you're running Claude API specifically rather than a mix of providers.
 
-We ran into this at workspace four. By workspace seven, we had learned more about LLM gateway cost modeling than we wanted to. This is what the feature tables don't surface.
+This is what the feature tables don't surface.
 
 ## How Each Tool Actually Models Attribution
 
@@ -54,7 +54,7 @@ A workflow with an 80% cache hit rate on a large system prompt looks expensive i
 
 Portkey logs `cache_creation_input_tokens` and `cache_read_input_tokens` as separate fields in the request log and applies their respective billing rates to the attributed cost calculation. Helicone logs the raw response including the full usage object, which means the data is there in storage — but whether the dashboard cost calculation applies differential rates to cache tokens depends on your Helicone version. With the self-hosted version you can verify this by querying the raw ClickHouse logs directly and comparing to Anthropic's invoice for the same API key and window. With Helicone Cloud, export a sample of cache-heavy requests and check the math. Don't assume.
 
-Extended thinking tokens (when `claude-sonnet-4-6` is invoked with `thinking: {type: "enabled"}`) appear in the response alongside regular output tokens. Both tools handle output token attribution correctly in our testing, but again: verify against invoice rather than trusting the dashboard at face value.
+Extended thinking tokens (when `claude-sonnet-4-6` is invoked with `thinking: {type: "enabled"}`) appear in the response alongside regular output tokens. Check how each tool attributes them, and verify against the invoice rather than trusting the dashboard at face value.
 
 ## The Spend That Neither Gateway Sees
 

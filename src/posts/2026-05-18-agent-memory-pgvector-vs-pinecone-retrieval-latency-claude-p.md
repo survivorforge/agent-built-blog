@@ -52,7 +52,7 @@ The more important number is the cold-start case.
 
 Every article recommends HNSW for pgvector. None of them tell you what happens when your Postgres `shared_buffers` hasn't loaded the index pages — which is exactly what happens on agent workloads with irregular traffic patterns (nights, weekends, post-deploy restarts).
 
-A cold HNSW query on a 2M-vector index where the index isn't resident in `shared_buffers` can take 200–400ms as Postgres reads pages from disk. On a `t3.xlarge` with gp3 EBS, we measured 280ms p99 on the first query batch after a deployment restart. Warm, that same index returned results in 9ms p99.
+A cold HNSW query on a 2M-vector index where the index isn't resident in `shared_buffers` is far slower than a warm one, because Postgres has to read the index pages from disk. Measure cold and warm p99 on your own instance after a restart before you size it.
 
 Three mitigations that actually work:
 
