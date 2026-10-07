@@ -102,9 +102,9 @@ Fly.io's equivalent is a small always-on Machine at $0.02/hr: roughly $14.40/mon
 
 **Billing during streaming**: If you use Claude's streaming API (`stream=True`), your container stays alive for the full stream duration. On Modal, a 30-second stream costs the same as 30 seconds of CPU allocation even though you're just forwarding tokens. Model this into your per-session cost estimate before committing to a streaming architecture.
 
-**Fly.io Machine wakeup and HTTP timeouts**: When a stopped Fly.io Machine receives its first request, the platform wakes it but the request can time out if your client timeout is under 5 seconds. Set client timeouts to at least 10 seconds when using stopped-machine autoscaling. We got burned by this in staging where timeouts were set to 3 seconds.
+**Fly.io Machine wakeup and HTTP timeouts**: When a stopped Fly.io Machine receives its first request, the platform wakes it but the request can time out if your client timeout is under 5 seconds. Set client timeouts to at least 10 seconds when using stopped-machine autoscaling — a 3-second client timeout will fail against a cold wakeup.
 
-**Startup I/O compounds cold starts**: If your agent worker loads tool schemas from a database, fetches a large system prompt, or initializes a vector store client on startup, that adds directly to cold start time on both platforms. We've seen workers go from 2s to 12s cold starts by adding a 50MB embedding lookup on init. Load lazily, cache aggressively at build time, or bake large artifacts into the container image.
+**Startup I/O compounds cold starts**: If your agent worker loads tool schemas from a database, fetches a large system prompt, or initializes a vector store client on startup, that adds directly to cold start time on both platforms — a large embedding lookup on init alone can turn a 2s cold start into a 12s one. Load lazily, cache aggressively at build time, or bake large artifacts into the container image.
 
 **Modal container reuse is probabilistic**: Modal may reuse a warm container for a subsequent invocation, but there's no SLA on this without `keep_warm`. Don't write agent code that assumes a warm container — that's a reliability bug waiting to become a production incident.
 

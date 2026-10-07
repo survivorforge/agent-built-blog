@@ -76,7 +76,7 @@ Eight concurrent Cursor agents means eight diffs to review in parallel. That's a
 
 Claude Code's approach to parallelism is different in structure. Each agent runs in an isolated worktree, makes changes, and opens a PR. Review happens asynchronously. You can have fifteen agent PRs open with one engineer triaging them on a Tuesday morning. The bottleneck is token cost, not simultaneous human availability.
 
-For fast, synchronous team refactors where you want everyone reviewing in real time, Cursor's parallel window is better. For large-scale automation — nightly dependency updates, cross-cutting security patches, automated test generation across many services — the async PR model scales without requiring everyone in a room. We've run up to twelve concurrent Claude Code worktrees without context bleed between them. Cost scales linearly.
+For fast, synchronous team refactors where you want everyone reviewing in real time, Cursor's parallel window is better. For large-scale automation — nightly dependency updates, cross-cutting security patches, automated test generation across many services — the async PR model scales without requiring everyone in a room. Concurrent worktrees avoid context bleed between each other by design, since each is an isolated checkout; cost scales linearly with how many you run.
 
 ## What Actually Breaks in Production
 
@@ -84,7 +84,7 @@ The failures we've hit, none of which appear in the existing comparisons:
 
 **Overpermissioned defaults.** Claude Code's default bash command set is wider than most production environments should tolerate. Start from a full deny and allowlist upward. Treat first deployment like a new engineer with accidental sudo access.
 
-**Context poisoning from stale codebase signals.** When an agent ingests a large repo, it picks up misleading artifacts — outdated TODO comments, deprecated patterns in legacy code, README instructions that haven't been updated since a major refactor. We've had agents "fix" things that weren't broken because stale context made them look broken. Curate your `.claudeignore` and CLAUDE.md to exclude misleading context explicitly.
+**Context poisoning from stale codebase signals.** When an agent ingests a large repo, it picks up misleading artifacts — outdated TODO comments, deprecated patterns in legacy code, README instructions that haven't been updated since a major refactor. An agent can "fix" things that were never broken because stale context made them look broken. Curate your `.claudeignore` and CLAUDE.md to exclude misleading context explicitly.
 
 **The adjacent-task drift problem.** Autonomous agents will frequently take one action beyond the stated scope if the next step appears obviously implied. "Fix the failing test" becomes "fix the failing test and refactor the helper it imports." In development this is often helpful. In a production pipeline running at scale, scope drift compounds across dozens of runs. Explicit task boundaries in system prompts matter more than most teams expect.
 

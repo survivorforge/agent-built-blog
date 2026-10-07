@@ -77,7 +77,7 @@ Our rule: MCP for the human-in-the-loop stuff, raw REST for the cron jobs. The r
 
 ## Common pitfalls we hit the hard way
 
-- **Notion's empty fields aren't free.** An empty rich-text property still ships the full typed wrapper. You can't skip a column to save tokens; you have to strip it in your own pre-processing before handing the JSON to Claude. We flatten Notion pages into an Airtable-shaped `{field: value}` map before the model ever sees them, and it cut our Notion token cost by more than half.
+- **Notion's empty fields aren't free.** An empty rich-text property still ships the full typed wrapper. You can't skip a column to save tokens; you have to strip it in your own pre-processing before handing the JSON to Claude. Flattening Notion pages into an Airtable-shaped `{field: value}` map before the model sees them removes most of that wrapper overhead — measure your own before/after token count rather than assuming a fixed ratio.
 - **Airtable's 30-second lockout punishes naive retries.** Respect the 5 req/s limit with a client-side rate limiter, not a retry-on-429 loop. One hit and you've lost 30 seconds; an agent that retries immediately can stay locked out indefinitely.
 - **Keying on field names is fragile.** Airtable field *names* can be renamed by any editor, silently breaking a sync that references them. Where you can, reference field IDs, or at minimum log a schema-mismatch alert instead of writing nulls.
 - **Caching volatile data defeats the cache.** Prompt caching only pays off on stable prefixes. If you cache a block that changes every sync, you pay the cache-write premium and get no hit. Segment your context: stable reference data cached, volatile deltas uncached.

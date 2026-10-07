@@ -89,7 +89,7 @@ Below 50,000 pages per month, the engineering investment takes long enough to re
 
 Above 200,000 pages per month, the math is unambiguous. You're leaving thousands of dollars per month on the table by not routing to Mistral.
 
-We haven't tested this above approximately 500,000 pages per month, so we can't speak to Mistral's behavior at very high concurrency. At around 50 parallel requests we've seen throttling. Budget for retry overhead — even 3% retry rate adds ~3% to your cost and complexity.
+We haven't tested this above approximately 500,000 pages per month, so we can't speak to Mistral's behavior at very high concurrency. Watch for throttling once you're running on the order of dozens of parallel requests. Budget for retry overhead — even 3% retry rate adds ~3% to your cost and complexity.
 
 ## Common Pitfalls
 

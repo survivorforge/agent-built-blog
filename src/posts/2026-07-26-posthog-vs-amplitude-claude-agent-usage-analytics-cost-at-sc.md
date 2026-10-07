@@ -93,7 +93,7 @@ Concretely, the stack we'd run today for a team on Claude agents: **PostHog** fo
 
 ## Common pitfalls
 
-Things that bit us or that we've watched bite other teams:
+Things that commonly bite teams running this setup:
 
 - **Instrumenting the agent loop first, pricing it never.** Adding a span per tool call feels free in dev. It is not free at 60,000 users. Estimate events-per-task *before* you turn on rich tracing in production, and put a sampling rate behind a flag from day one.
 - **Trusting the "MTU is predictable" story for agents.** It's predictable in user count and unpredictable in cost, because the event cap is the real constraint. Price Amplitude on your projected *event* volume, not your MAU, or the first real month will surprise you.
@@ -105,4 +105,4 @@ Things that bit us or that we've watched bite other teams:
 
 If you're picking one tool today for Claude agent analytics and you value transparent, self-serve pricing and native LLM observability in the same place, **PostHog is the closer fit** — not because it's universally better, but because it's the only one of the two that has a real answer to "show me token spend and traces per feature" without a build project, and its per-event cost is one you can calculate without a sales call. If your product org already lives in Amplitude for its deeper behavioral modeling, keep it for the *business* layer and put a dedicated tracing tool underneath it — don't try to make Amplitude be your observability platform.
 
-The unresolved tension, and the reason we're not more absolute: agent products are young enough that nobody's event-per-task number has stabilized. Ours has crept up every quarter as we've traced more of the loop. The right question isn't "which tool is cheaper at 10M events" — it's "how fast is my events-per-task climbing, and does my analytics bill grow with my traces or with my users?" Answer that, and the PostHog-vs-Amplitude choice mostly answers itself.
+The unresolved tension, and the reason we're not more absolute: agent products are young enough that nobody's event-per-task number has stabilized, and it tends to climb as you trace more of the loop. The right question isn't "which tool is cheaper at 10M events" — it's "how fast is my events-per-task climbing, and does my analytics bill grow with my traces or with my users?" Answer that, and the PostHog-vs-Amplitude choice mostly answers itself.

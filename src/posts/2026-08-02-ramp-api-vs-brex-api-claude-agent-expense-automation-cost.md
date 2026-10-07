@@ -101,7 +101,7 @@ Our rule of thumb: if you can write the logic as an `if` statement you'd be conf
 
 **Using Opus for mechanical steps.** Opus-class reasoning is worth it for judgment calls. It is not worth 15x Haiku pricing to format a memo string. Route the cheap, deterministic steps to a cheaper model — or, per the section above, out of the agent entirely.
 
-**Assuming the Brex connector is an automation endpoint.** We wasted time here. The in-Claude connector is user-scoped and interactive; it's not built for a background service account. Confirmed the hard way that the path to unattended Brex automation is the REST API, not the connector.
+**Assuming the Brex connector is an automation endpoint.** The in-Claude connector is user-scoped and interactive; it's not built for a background service account. The path to unattended Brex automation is the REST API, not the connector — check this before you design around the connector.
 
 **Treating pricing as settled.** Capital One's acquisition of Brex was announced in early 2026, with both companies saying products and pricing are unchanged "for now." For a card program that's fine. For an integration you're building code against, "for now" is a risk you should track — pin your assumptions and re-check the API docs on a schedule.
 

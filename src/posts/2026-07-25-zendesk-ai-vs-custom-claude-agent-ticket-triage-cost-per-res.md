@@ -95,11 +95,11 @@ Two caveats we'll own. The $4,500 maintenance floor is an estimate, not a measur
 
 ## Common pitfalls that blow up your cost model
 
-The ways we've watched these numbers go sideways in practice:
+The ways these numbers commonly go sideways in practice:
 
 - **Comparing per-call to per-resolution.** The headline mistake. Always divide Claude's per-conversation token cost by your real deflection rate before comparing to Zendesk's $1.50. A 25% deflection rate quietly doubles your effective per-resolution cost versus a 50% rate.
 - **Forgetting you pay for the escalations.** Zendesk's model is genuinely kind here — an escalated ticket costs you nothing in AR fees. Your Claude agent burns tokens on every escalation, and messy tickets that eventually escalate often run *more* turns than clean ones that resolve. Budget tokens for failure, not just success.
-- **Skipping prompt caching, then quoting the uncached price.** We've seen teams model the build at full input price, conclude it's "not worth it," and walk away from a 2x saving they left on the table. Cache first, then decide.
+- **Skipping prompt caching, then quoting the uncached price.** Modeling the build at full input price makes it easy to conclude it's "not worth it" and walk away from a 2x saving that was available the whole time. Cache first, then decide.
 - **Routing everything through the top model.** Opus-per-resolution at ~$0.62 is closer to Zendesk than to Haiku. Tier your routing or lose the cost advantage that justified building.
 - **Pricing the build at zero maintenance.** The "$30/month in API costs!" framing treats the agent as write-once. It isn't. KB drift, model migrations, and quality regressions are a standing tax. If you can't name who owns the agent, you can't afford to build it.
 - **Ignoring the LLM-judge step.** Zendesk verifies resolutions before billing; if you want a comparable "true automation rate" you'll add your own verification pass, which is more tokens. Don't compare a verified resolution to an unverified one.

@@ -100,7 +100,7 @@ One important note on the self-hosted Langfuse vs. Langfuse Cloud feature compar
 
 ## Common Pitfalls
 
-**Trace IDs don't automatically propagate across async boundaries in Claude agents.** If your agent fans out to parallel tool calls using `Promise.all()` or spawns sub-agents, you need to explicitly pass the trace context. The OpenInference instrumentation handles sequential calls well but drops the thread in concurrent patterns unless you use Langfuse's context manager wrapper. We found this out after two weeks of traces that looked like independent sessions rather than a connected agent run.
+**Trace IDs don't automatically propagate across async boundaries in Claude agents.** If your agent fans out to parallel tool calls using `Promise.all()` or spawns sub-agents, you need to explicitly pass the trace context. The OpenInference instrumentation handles sequential calls well but drops the thread in concurrent patterns unless you use Langfuse's context manager wrapper. Skip it and your traces look like independent sessions rather than one connected agent run — check this before you trust a trace view.
 
 **AgentOps' session replay is significantly better for multi-agent graphs than single-agent debugging.** Its session view is designed for multi-agent systems with multiple nodes — when you're running a Claude orchestrator with sub-agents, the session graph view is genuinely clearer than Langfuse's trace tree. For single-agent Claude SDK usage, the Langfuse trace tree is simpler to navigate.
 

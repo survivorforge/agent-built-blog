@@ -107,7 +107,7 @@ So the real decision rule, from having shipped both:
 
 **Letting the output tokens hide.** Everyone budgets input tokens because the contract is big and obvious. But output is 5× the price of input, and an agent that writes a verbose 8,000-token analysis of every NDA costs more than one that returns a tight structured verdict. Constrain the output schema.
 
-**Forgetting the MCP write limits.** We architected a flow assuming the agent could update Agreement Manager records directly, then discovered those operations are read-only in the current beta. Actions route back through Docusign Workflow Builder. Design for that boundary now, not after your demo breaks.
+**Forgetting the MCP write limits.** Agreement Manager record updates are read-only in the current MCP beta, not the direct write surface a flow diagram implies — actions route back through Docusign Workflow Builder. Design for that boundary now, not after your demo breaks.
 
 **Comparing AI cost while ignoring envelope cost.** The signature is $5–8. The AI review is $0.12. If you're automating the full lifecycle, the token cost is a rounding error — spend your optimization budget on the parts that actually move the invoice.
 

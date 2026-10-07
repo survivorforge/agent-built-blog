@@ -85,7 +85,7 @@ That last part is worth more than any price difference, because turn detection i
 - **Whisper hallucinating on silence.** Whisper is notorious for inventing text in dead air — phantom "Thank you for watching" strings and similar. Feed that to Claude and it responds to something the user never said. Deepgram is far less prone to this. On a voice agent, a hallucinated transcript isn't a cosmetic error; it derails the conversation.
 - **Holding one STT socket open per call.** Pay-for-silence, described above. Pause the stream during TTS playback and long pauses.
 - **Assuming newer transcription models are better.** gpt-4o-transcribe is newer than Nova-3 and collapsed to 43.8% WER on long-form audio in independent testing. Benchmark on *your* audio domain before switching.
-- **Optimizing the wrong layer.** We spent a week arguing about STT and then realized swapping ElevenLabs for Cartesia saved 4× what the entire STT line cost. Look at TTS and telephony first.
+- **Optimizing the wrong layer.** Teams argue about STT pricing and miss that a TTS vendor swap can save multiples of what the entire STT line costs. Look at TTS and telephony first.
 
 ## The tension worth watching
 

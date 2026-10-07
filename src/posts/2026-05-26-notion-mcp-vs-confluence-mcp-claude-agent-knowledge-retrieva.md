@@ -62,7 +62,7 @@ Notion's 3 requests/second rate limit means an eight-step chain needs at least 2
 
 Confluence Cloud's limit is approximately 300 requests per minute (5 req/sec) per token. Self-hosted Confluence Data Center has no external rate limit; you're governed by your own server and database capacity. For high-volume or concurrent agentic workloads, this gap is material.
 
-There's a subtler version of the problem: when Notion search returns stale or title-only results, the agent makes additional queries to compensate. In practice, we've seen agents issue 12–15 Notion calls to answer a question that Confluence resolves in three or four, because each Notion result requires a separate fetch and the content sometimes doesn't match what the title implied. The rate limit then turns a retrieval quality problem into a latency problem.
+There's a subtler version of the problem: when Notion search returns stale or title-only results, the agent makes additional queries to compensate. In practice, that can mean an agent issuing 12–15 Notion calls to answer a question that Confluence resolves in three or four, because each Notion result requires a separate fetch and the content sometimes doesn't match what the title implied. The rate limit then turns a retrieval quality problem into a latency problem.
 
 ## Search Quality Is Latency by Another Name
 

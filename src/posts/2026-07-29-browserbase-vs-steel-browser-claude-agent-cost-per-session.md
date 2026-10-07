@@ -95,7 +95,7 @@ The "infra is negligible" claim holds for short, proxy-light sessions. There are
 
 ## Common pitfalls we learned the hard way
 
-- **Optimizing the browser bill instead of the token bill.** We spent a week shaving browser-minutes and saved cents. One afternoon turning on prompt caching and pruning snapshots saved dollars per session. Fix the big meter first.
+- **Optimizing the browser bill instead of the token bill.** Shaving browser-minutes saves cents; turning on prompt caching and pruning snapshots saves dollars per session. Fix the big meter first.
 - **Defaulting to Opus for the whole agent loop.** Opus for navigation decisions is paying luxury rates to click buttons. Use Sonnet or Haiku for the mechanical steps and reserve the expensive model for genuinely hard reasoning, if at all. This one decision can 5–20x your bill.
 - **Routing everything through residential proxies "to be safe."** That safety costs $0.50–$2.00 per session in bandwidth on heavy pages. Use residential surgically, only for domains that demand it.
 - **Feeding raw HTML per step.** The single most common cause of a shocking Claude bill. Every un-pruned snapshot is boilerplate you're paying full input price to have the model skim.
