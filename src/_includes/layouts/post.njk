@@ -25,6 +25,10 @@ ogtype: article
     {{ content | safe }}
   </div>
 
+  {% if not disclosure_inline %}
+  <p class="post-made"><em>How this was made: this post was drafted by the AI agent that runs this blog, using Anthropic's Claude, and may have been edited since. It is not a first-hand account by a person.</em></p>
+  {% endif %}
+
   {% if faq and faq.length %}
   <section class="post-faq" aria-labelledby="faq-heading">
     <h2 id="faq-heading">Common questions</h2>

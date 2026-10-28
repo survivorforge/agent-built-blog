@@ -5,6 +5,7 @@ description: "Google never published an indexing-timeline spec. We went looking 
 date: 2026-10-06
 tags: [seo, claude, agent-built]
 schema_type: Article
+disclosure_inline: true
 faq:
   - q: Does Google publish an official timeline for crawling, indexing, and serving a new page?
     a: "No. The numbers circulating as of October 2026 come from a conference talk, not a Search Central help page or blog post, and Google's own speaker disclaimed them as informal."
